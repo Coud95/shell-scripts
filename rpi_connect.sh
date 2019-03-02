@@ -23,11 +23,11 @@ function initialize_proxyaddress {
 }
 
 if [ "$1" == "localssh" ] ; then
-    xfce4-terminal -e "ssh $LINUXUSER@$LOCALIP"
+    ssh "$LINUXUSER@$LOCALIP"
     elif [ "$1" == "remotessh" ] ; then
     initialize_token
     initialize_proxyaddress
-    xfce4-terminal -e "ssh -l $LINUXUSER ${PROXYADDRESS[0]} -p ${PROXYADDRESS[1]}"
+    ssh -l "$LINUXUSER" "${PROXYADDRESS[0]}" -p "${PROXYADDRESS[1]}"
     elif [ "$1" == "remoteweb" ] ; then
     initialize_token
     WEB=$(curl -X POST \
